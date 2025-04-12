@@ -1,4 +1,5 @@
-function ExpenseTable({ expenses }) { //expenses is passed as a prop from the parent component(App.jsx)
+function ExpenseTable({ expenses, onDelete }) {
+  //expenses is passed as a prop from the parent component(App.jsx)
   return (
     <table className="table-auto w-2/3 border-separate border border-black ">
       <thead>
@@ -22,6 +23,14 @@ function ExpenseTable({ expenses }) { //expenses is passed as a prop from the pa
               <td className="border p-2">{exp.category}</td>
               <td className="border p-2">{exp.amount}</td>
               <td className="border p-2">{exp.date}</td>
+              <td className="p-2">
+                <button
+                  onClick={() => onDelete(index)}
+                  className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-700"
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           )
         )}

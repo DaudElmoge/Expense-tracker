@@ -17,6 +17,13 @@ function App() {
     setSearchTerm(term);
   };
 
+  const handleDeleteExpense = (indexToDelete) => {
+    const updatedExpenses = expenses.filter(
+      (_, index) => index !== indexToDelete
+    );
+    setExpenses(updatedExpenses);
+  };
+
   const filteredExpenses = expenses.filter(
     (e) => e.name.includes(searchTerm) || e.description.includes(searchTerm)//filters the expenses based on the search term
   );
@@ -27,9 +34,12 @@ function App() {
     >
       <h1 className="text-3xl font-bold mb-4">Expense Tracker</h1>
       <SearchBar onSearch={handleSearch} />
-      <div className="flex gap-6 font-semibold" >
+      <div className="flex gap-6 font-semibold">
         <ExpenseForm onAddExpense={handleAddExpense} />
-        <ExpenseTable expenses={filteredExpenses} />
+        <ExpenseTable
+          expenses={filteredExpenses}
+          onDelete={handleDeleteExpense}
+        />
       </div>
     </div>
   );
