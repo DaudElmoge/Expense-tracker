@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-function ExpenseForm({ onAddExpense }) { // This component handles the form for adding expenses
+function ExpenseForm({ onAddExpense }) {
+  // This component handles the form for adding expenses
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -14,11 +15,26 @@ function ExpenseForm({ onAddExpense }) { // This component handles the form for 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddExpense(formData);
-      setFormData({ name: "", description: "", amount: "", date: "" });// prevents page refresh
-      //sends the form data to the parent component
-  };
 
+    // Validate that all fields are filled
+    const isEmpty = Object.values(formData).some((val) => val.trim() === "");
+
+    if (isEmpty) {
+      alert("Please fill in all the fields before submitting.");
+      return;
+    }
+
+    onAddExpense(formData);// sends the form data to the parent component (App.jsx) to be added to the list of expenses
+
+    // Reset form after successful submit
+    setFormData({
+      name: "",
+      description: "",
+      category: "",
+      amount: "",
+      date: "",
+    });
+  };
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-1/3">
       <input
@@ -56,7 +72,9 @@ function ExpenseForm({ onAddExpense }) { // This component handles the form for 
         type="date"
         className="p-2 border"
       />
-      <button className="bg-black text-white p-2 hover:bg-green-400 rounded-3xl">Submit</button>
+      <button className="bg-black text-white p-2 hover:bg-green-400 rounded-3xl">
+        Submit
+      </button>
     </form>
   );
 }

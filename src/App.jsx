@@ -27,7 +27,7 @@ function App() {
     >
       <h1 className="text-3xl font-bold mb-4">Expense Tracker</h1>
       <SearchBar onSearch={handleSearch} />
-      <div className="flex gap-6">
+      <div className="flex gap-6 font-semibold" >
         <ExpenseForm onAddExpense={handleAddExpense} />
         <ExpenseTable expenses={filteredExpenses} />
       </div>
