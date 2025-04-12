@@ -16,18 +16,21 @@ function ExpenseForm({ onAddExpense }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate that all fields are filled
-    const isEmpty = Object.values(formData).some((val) => val.trim() === "");
-
-    if (isEmpty) {
+    // Check if any field is empty
+    if (
+      formData.name === "" ||
+      formData.description === "" ||
+      formData.category === "" ||
+      formData.amount === "" ||
+      formData.date === ""
+    ) {
       alert("Please fill in all the fields before submitting.");
       return;
     }
 
-    onAddExpense(formData);// sends the form data to the parent component (App.jsx) to be added to the list of expenses
+    onAddExpense(formData);//send data to App.jsx
 
-    // Reset form after successful submit
-    setFormData({
+    setFormData({//clear all fields after submitting
       name: "",
       description: "",
       category: "",
@@ -35,6 +38,7 @@ function ExpenseForm({ onAddExpense }) {
       date: "",
     });
   };
+
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-1/3">
       <input

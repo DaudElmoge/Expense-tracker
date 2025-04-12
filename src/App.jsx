@@ -22,7 +22,7 @@ function App() {
   );
   return (
     <div
-      className="p-4 max-w-4xl mx-auto bg-sky-100 shadow-md rounded bg-center"
+      className="p-4 max-w-4xl mx-auto rounded bg-center "
       style={{ backgroundImage: `url(${Bg})` }}
     >
       <h1 className="text-3xl font-bold mb-4">Expense Tracker</h1>
