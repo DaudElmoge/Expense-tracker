@@ -1,6 +1,6 @@
 function ExpenseTable({ expenses }) { //expenses is passed as a prop from the parent component(App.jsx)
   return (
-    <table className="table-auto w-2/3 border-collapse border border-black">
+    <table className="table-auto w-2/3 border-separate border border-black ">
       <thead>
         <tr>
           <th className="border p-2">Expense</th>
@@ -11,15 +11,20 @@ function ExpenseTable({ expenses }) { //expenses is passed as a prop from the pa
         </tr>
       </thead>
       <tbody>
-        {expenses.map((exp, index) => (// loops through the expenses and creates a table row for each expense
-          <tr key={index}>
-            <td className="border p-2">{exp.name}</td>
-            <td className="border p-2">{exp.description}</td>
-            <td className="border p-2">{exp.category}</td>
-            <td className="border p-2">{exp.amount}</td>
-            <td className="border p-2">{exp.date}</td>
-          </tr>
-        ))}
+        {expenses.map(
+          (
+            exp,
+            index // loops through the expenses and creates a table row for each expense
+          ) => (
+            <tr key={index}>
+              <td className="border p-2">{exp.name}</td>
+              <td className="border p-2">{exp.description}</td>
+              <td className="border p-2">{exp.category}</td>
+              <td className="border p-2">{exp.amount}</td>
+              <td className="border p-2">{exp.date}</td>
+            </tr>
+          )
+        )}
       </tbody>
     </table>
   );

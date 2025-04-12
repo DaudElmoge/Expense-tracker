@@ -56,7 +56,7 @@ function ExpenseForm({ onAddExpense }) { // This component handles the form for 
         type="date"
         className="p-2 border"
       />
-      <button className="bg-black text-white p-2 hover:bg-green-400 rounded">Submit</button>
+      <button className="bg-black text-white p-2 hover:bg-green-400 rounded-3xl">Submit</button>
     </form>
   );
 }

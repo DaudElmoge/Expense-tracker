@@ -2,6 +2,7 @@ import { useState } from "react";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseTable from "./components/ExpenseTable";
 import SearchBar from "./components/SearchBar";
+import Bg from "./images/coins.jpg"; //importing the coin image
 //importing our components
 
 function App() {
@@ -20,7 +21,10 @@ function App() {
     (e) => e.name.includes(searchTerm) || e.description.includes(searchTerm)//filters the expenses based on the search term
   );
   return (
-    <div className="p-4 max-w-4xl mx-auto">
+    <div
+      className="p-4 max-w-4xl mx-auto bg-sky-100 shadow-md rounded bg-center"
+      style={{ backgroundImage: `url(${Bg})` }}
+    >
       <h1 className="text-3xl font-bold mb-4">Expense Tracker</h1>
       <SearchBar onSearch={handleSearch} />
       <div className="flex gap-6">
